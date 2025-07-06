@@ -1,0 +1,254 @@
+# ======================
+# 通用忽略规则
+# ======================
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 备份文件
+*.bak
+*.swp
+*~
+*.old
+*.orig
+
+# 日志文件
+*.log
+*.log.*
+
+# 临时文件
+*.tmp
+*.temp
+
+# 编译文件
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+
+# 包管理
+pip-delete-this-directory.txt
+pip-selfcheck.json
+/Pipfile
+/Pipfile.lock
+/poetry.lock
+/requirements.txt
+
+# 测试覆盖率
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+
+# 虚拟环境
+venv/
+.env/
+.venv/
+env/
+ENV/
+venv.bak/
+.venv.bak/
+
+# 构建输出
+build/
+dist/
+*.egg-info/
+*.egg
+*.whl
+*.tar.gz
+
+# 文档生成
+docs/_build/
+_site/
+
+# ======================
+# PyCharm 特定忽略规则
+# ======================
+
+# IDE 配置目录
+.idea/
+.idea_modules/
+
+# IDE 工作区文件
+*.iml
+*.ipr
+*.iws
+
+# PyCharm 缓存和索引
+.idea/caches/
+.idea/libraries/
+.idea/shelf/
+.idea/tasks.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/dictionaries/
+.idea/inspectionProfiles/
+.idea/jsLibraryMappings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/scopes/
+.idea/sonarlint/
+.idea/sonarIssues.xml
+.idea/uiDesigner.xml
+
+# PyCharm 运行配置
+.idea/runConfigurations/
+
+# ======================
+# LazyVim (Neovim) 特定忽略规则
+# ======================
+
+# Neovim 交换文件
+*.sw[a-p]
+*.sw[a-p].*
+.sw[a-p]
+
+# Neovim 撤销历史
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+Sessionx.vim
+
+# Neovim 临时文件
+.*.tmp
+*.tmp
+
+# LazyVim 会话文件
+*.session
+*.session.lock
+
+# LazyVim 状态文件
+lazyvim-state.json
+
+# Neovim 视图文件
+*.view
+*.view.lock
+
+# Neovim 备份文件
+*~
+.*.un~
+*.un~
+
+# LazyVim 插件缓存
+.local/share/nvim/lazy/
+.local/share/nvim/site/pack/packer/
+
+# Neovim 日志文件
+.nvimlog
+.nvimlog.*
+
+# ======================
+# Python 项目特定忽略规则
+# ======================
+
+# Jupyter Notebook 检查点
+.ipynb_checkpoints/
+
+# 数据集和大型文件
+*.csv
+*.json
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.db
+*.sqlite
+*.sqlite3
+
+# 媒体文件
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.mp4
+*.avi
+*.wav
+*.mp3
+
+# 压缩文件
+*.zip
+*.gz
+*.tar
+*.7z
+*.rar
+
+# ======================
+# 其他开发工具
+# ======================
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Eclipse
+.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+
+# IntelliJ
+out/
+
+# macOS
+._*
+
+# Windows
+ehthumbs.db
+[Dd]esktop.ini
+
+# Linux
+*~
+
+# ======================
+# 项目特定忽略 (根据需要添加)
+# ======================
+
+# 配置文件 (但保留示例)
+config.ini
+!config.example.ini
+
+# 密钥文件
+*.key
+*.pem
+*.cert
+*.jks
+*.keystore
+*.env
+secrets.yaml
+credentials.json
+
+# 大型数据文件
+/data/
+!/data/README.md
+
+# 模型文件
+/models/
+*.pt
+*.pth
+*.h5
+*.onnx
