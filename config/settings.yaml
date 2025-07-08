@@ -2,5 +2,5 @@ folder_name: test_folder_name
 save_path: test_save_path
 start_index: test_start_index
 url:
-  - test_item_1
-  - test_item_2
+- test_item_1
+- baidu.com

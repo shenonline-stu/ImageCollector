@@ -16,6 +16,7 @@
 
 from pathlib import Path
 import os
+import logging
 
 
 class PathManager:
@@ -25,19 +26,24 @@ class PathManager:
     def __new__(cls):
         if cls._inistance is None:
             cls._inistance = super(PathManager, cls).__new__(cls)
+
             # 获取项目根目录
             cls.root = Path(__file__).parent.parent.resolve()
+
+            # 初始化必要目录
+            cls._init_directories()
+
             # 把根目录设置为工作目录
-            os.chdir(str(cls.root))
+            # [250708] 优化删除，避免在脚本运行时改变工作目录导致路径问题
+            # os.chdir(str(cls.root))
+
         return cls._inistance
 
-    @property
-    def data_dir(self) -> Path:
-        """
-        获取数据目录
-        :return: 数据目录路径
-        """
-        return self.root / "data"
+    @classmethod
+    def _init_directories(cls):
+        """确保日志目录存在"""
+        os.makedirs(cls.root / "cnofig", exist_ok=True)
+        os.makedirs(cls.root / "logs", exist_ok=True)
 
     @property
     def config_dir(self) -> Path:
@@ -58,4 +64,8 @@ class PathManager:
         """
         获取基于工作目录的相对路径
         """
-        return Path.cwd().joinpath(*paths)
+        return self.root.joinpath(*paths)
+
+
+pm = PathManager()
+logger = logging.getLogger("ImageCollector")
