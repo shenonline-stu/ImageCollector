@@ -21,21 +21,32 @@
 @Version        :
 """
 
+from lib.logger_manager import setup_logger
+from lib.path_manager import PathManager
+from pathlib import Path
 
-# 读取配置文件
-def read_config():
-    import yaml
-    import os
 
-    config_file = "lib/settings.yaml"
-    if os.path.exists(config_file):
-        with open(config_file, "r", encoding="utf-8") as f:
-            print(f"[DEBUG] {config_file} 文件已经存在")
-            return yaml.safe_load(f)
-    else:
-        print(f"[DEBUG] {config_file} 文件不存在")
-        return None
+def path_init():
+    """
+    初始化路径管理器并打印相关路径信息
+    :return : None
+    """
+    pm = PathManager()
 
+    logger.info(f"项目根目录    : {pm.root}")
+    logger.info(f"当前工作目录  : {Path.cwd()}")
+    logger.info(f"配置文件目录  ：{pm.config_dir}")
+    logger.info(f"日志文件目录  ：{pm.get_log_dir('ma')}")
+
+    # 使用路径管理器创建文件
+    log_path = pm.get_log_dir("main")
+    log_path.parent.mkdir(parents=True, exist_ok=True)  # 确保日志目录存在
+
+    with open(log_path, "w", encoding="utf-8") as f:
+        f.write("[INFO] 日志记录开始...")
+
+
+logger = setup_logger(log_file=Path("logs/main.log"), level="INFO", file_level="DEBUG")
 
 if __name__ == "__main__":
-    print(read_config())
+    path_init()
