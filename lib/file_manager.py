@@ -27,6 +27,8 @@ def read_setting(config_path: str) -> dict | None:
 
 
 def save_setting(config_path: str, data: dict) -> None:
+    if not isinstance(data, dict):
+        raise TypeError("[DEBUG] 保存配置数据必须是字典类型")
     with open(config_path, "w", encoding="utf-8") as f:
         yaml.safe_dump(data, f, allow_unicode=True, default_flow_style=False)
         logger.info(f"保存配置文件：{config_path}")
