@@ -7,6 +7,10 @@
 使用方法：
     pass
 
+更新内容：
+1.　删除设置工作目录的步骤，工作目录会影响全局，暂时避免
+2.　删除重新创建logging实例，直接获取已经生成的实例
+
 @File           : path_manager.py
 @Author         : Elson.L
 @Created        : 2025-07-07
@@ -17,6 +21,8 @@
 from pathlib import Path
 import os
 import logging
+
+logger = logging.getLogger("ImageCollector")
 
 
 class PathManager:
@@ -42,7 +48,7 @@ class PathManager:
     @classmethod
     def _init_directories(cls):
         """确保日志目录存在"""
-        os.makedirs(cls.root / "cnofig", exist_ok=True)
+        os.makedirs(cls.root / "config", exist_ok=True)
         os.makedirs(cls.root / "logs", exist_ok=True)
 
     @property
@@ -68,4 +74,3 @@ class PathManager:
 
 
 pm = PathManager()
-logger = logging.getLogger("ImageCollector")

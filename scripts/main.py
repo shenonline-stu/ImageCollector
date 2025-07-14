@@ -10,9 +10,9 @@
 @Version        : 1.1
 """
 
+from lib.logger_manager import setup_logger
 from lib.path_manager import pm  # 导入路径管理器
 from lib.file_manager import read_setting, save_setting
-from lib.logger_manager import setup_logger
 
 # 初始化日志器（使用路径管理器获取日志路径）
 logger = setup_logger(log_file=pm.get_log_dir("main"), level="INFO", file_level="DEBUG")
@@ -20,7 +20,8 @@ logger = setup_logger(log_file=pm.get_log_dir("main"), level="INFO", file_level=
 
 def main():
     """程序主入口函数"""
-    logger.info("程序启动")
+    logger.info(f"{'=' * 10} 程序启动 {'=' * 10}")
+    logger.info(f"当前项目目录：{pm.root}")
 
     # 获取配置文件路径
     config_file = pm.config_dir / "settings.yaml"
@@ -28,7 +29,7 @@ def main():
 
     # 读取配置
     settings = read_setting(str(config_file)) or {}
-    logger.info(f"当前配置: {settings}")
+    logger.info(f"当前配置文件: {settings}")
 
     # 确保url配置存在且是列表
     if "url" not in settings or not isinstance(settings["url"], list):
@@ -40,7 +41,7 @@ def main():
 
     # 更新配置
     settings["url"][1] = "baidu.com"
-    logger.info(f"更新配置: {settings}")
+    logger.info(f"更新配置文件: {settings}")
 
     # 保存配置
     save_setting(str(config_file), settings)
